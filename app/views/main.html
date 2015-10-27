@@ -1,0 +1,70 @@
+<div class=" jumbotron contentDiv">
+  <h2>Statement for <strong>{{billData.statement.period.from}}</strong> to <strong>{{billData.statement.period.to}}</strong></h2>
+  <ul class="list-unstyled">
+    <li><h5>Generated : {{billData.statement.generated}}</h5></li>
+    <li><h5>Due : {{billData.statement.due}}</h5></li>
+  </ul>
+</div>
+
+<div class="contentDiv">
+<h2>
+  <small>Subscriptions</small>
+</h2>
+<hr>
+  <table class="table table-striped">
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Cost</th>
+    </tr>
+    <tr ng-repeat="subscription in billData.package.subscriptions">
+      <td>{{subscription.type}}</td>
+      <td>{{subscription.name}}</td>
+      <td>{{subscription.cost}}</td>
+    </tr>
+  </table>
+  <h4 class="total pull-right">Total Cost : {{billData.package.total}}</h4>
+</div>
+
+<div class="contentDiv">
+  <h2><small>Sky Store</small></h2>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>Type</th>
+      <th>Title</th>
+      <th>Cost</th>
+    </tr>
+    <tr ng-repeat="movie in billData.skyStore.buyAndKeep">
+      <td>Buy and Keep</td>
+      <td>{{movie.title}}</td>
+      <td>{{movie.cost}}</td>
+    </tr>
+    <tr ng-repeat="rental in billData.skyStore.rentals">
+      <td>Rental</td>
+      <td>{{rental.title}}</td>
+      <td>{{rental.cost}}</td>
+    </tr>
+  </table>
+  <h4 class="total pull-right">Total Cost : {{billData.skyStore.total}}</h4>
+</div>
+
+<div class="contentDiv">
+<h2><small>Call Charges</small></h2>
+<hr>
+  <table class="table table-striped">
+    <tr>
+      <th>Number</th>
+      <th>Duration</th>
+      <th>Cost</th>
+    </tr>
+    <tr ng-repeat="charge in billData.callCharges.calls">
+      <td>{{charge.called}}</td>
+      <td>{{charge.duration}}</td>
+      <td>{{charge.cost}}</td>
+    </tr>
+  </table>
+  <h4 class="total pull-right">Total Cost : {{billData.callCharges.total}}</h4>
+</div>
+
+<h3 id="grandTotal" class="pull-left">Bill Total: {{billData.total}}</h3>
